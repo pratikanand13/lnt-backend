@@ -15,7 +15,7 @@ const dataTweets = function (req, res, next) {
         "L&T_Sentiment_Analysis_Final.ipynb"
       );
 
-      // Execute the Jupyter Notebooks using nbconvert command
+  
 
       executeNotebook(notebookPath1);
       executeNotebook(notebookPath2);
@@ -26,9 +26,9 @@ const dataTweets = function (req, res, next) {
         "data.json"
       ));
       function replaceQuotes(str) {
-        // Replace single quotes with double quotes and vice versa
+     
         return str.replace(/(['"])/g, function(match, p1) {
-            // If it's a single quote, replace it with a double quote, and vice versa
+           
             return p1 === '"' ? "'" : '"';
         });
     }
@@ -44,7 +44,7 @@ const dataTweets = function (req, res, next) {
   } else res.status(405).send("select defined state");
 };
 
-// Function to execute a Jupyter notebook
+
 function executeNotebook(notebookPath) {
   exec(
     `jupyter nbconvert --execute "${notebookPath}" --to notebook --output "${notebookPath}_executed.ipynb"`,

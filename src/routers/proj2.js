@@ -10,7 +10,7 @@ router.post("/proj2", tweetsData, async function (req, res) {
     var predictionLabels = [];
     var tweetId = [];
 
-    // Extracting data from req.hoteljsonFile
+   
     const hoteljsonFile = req.hoteljsonFile;
     for (let i = 0; i < hoteljsonFile.prediction_scores.length; i++) {
       predictionScore.push(hoteljsonFile.prediction_scores[i]);
@@ -18,10 +18,10 @@ router.post("/proj2", tweetsData, async function (req, res) {
       tweetId.push(hoteljsonFile.tweet_id[i]);
     }
 
-    // Call the data function with correct parameters
+    
     let response = data(predictionScore, predictionLabels, tweetId);
 
-    // Determine the message based on sentiment analysis results
+   
     let message = "";
     if (response.noPositive > response.noNegative && response.noPositive > response.noNeutral)
       message = "The sentiment is overwhelmingly positive!";
@@ -30,7 +30,7 @@ router.post("/proj2", tweetsData, async function (req, res) {
     else 
       message = "The sentiment is balanced and neutral.";
 
-    // Send the response with the message
+    
     res.status(200).json({ ...response, message: message });
   } catch (e) {
     console.error("Error processing data:", e);

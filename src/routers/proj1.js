@@ -3,9 +3,9 @@ const router = new express.Router();
 const calculation = require("../utils/calc.js");
 
 router.post("/proj1/pred_Prod", async function (req, res) {
-  console.log(req.body)
+  // console.log(req.body)
   const productivity =  calculation.calc(req.body);
-  console.log(productivity);
+  
   res.status(201).send(productivity);
 });
 
